@@ -4,7 +4,7 @@ $productId = '311';
 
 $db_name = 'proliner_zcart';
 		$db_user = 'root';
-		$db_pass = 'proline55';
+		$db_pass = '*****';
 		$host = 'localhost';
 		$charset = 'utf8';
 		$table = 'products_description';	

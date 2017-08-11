@@ -58,21 +58,54 @@
 			<label>Gross Price</label><br>
 			<p><?php echo $product['products_price'];?><span style='color:red; font-size:8px;'>Edit Price in other area</span></p>
 			<label>DESCRIPTION</label><br>
-			<textarea type='text' name='products_description' style='width:600px; height:400px;' value="<?php echo $product['products_description'];?>"></textarea><br>
+			<textarea type='text' id="products_description" style='width:600px; height:400px;' value="<?php echo $product['products_description'];?>"></textarea><br>
+			<input type='hidden' id='base-encode' name='base-encoded-description'/>
 			<div class='np-spacer'></div>
 			<button type='button' id='np-submit-button'>Submit</button>
 		</form>
 	</div>
 </div>
 <script src="https://code.jquery.com/jquery-latest.js"></script>
+<!-- TO BE MOVED INTO SEPERATE FILE -->
 <script>
 $(function(){
 	var button = $('#np-submit-button');
 	var form = $('#np-form');
-	button.on('click', function(){
+	var description = $('#products_description');
+	$(button).on('click', function(){
+		var formValue = $(description).val();
+		console.log('got form value');
+		var encoded = encodeURI(formValue);
+		console.log('encoded data');
+		var data = {'code':encoded};
+		console.log(data);
+		var check = $.ajax({
+		  type: "POST",
+		  url: "http://zencart.dev/adminpro/editor-workaround/edit_product_action.php",
+		  data: data,
+		  success: function(results){
+		  	console.log('in success');
+		  	console.log(results);
+		  },
+		  dataType: 'json'
+		});
+		console.log(check);
+	});
+	/*button.on('click', function(){
 		var stuff = form.serializeArray();
-		console.log(stuff);
-	})
-})
+		var data = "";
+		console.log('in the click function');
+		$.ajax({
+		  type: "POST",
+		  url: "edit_product_action.php",
+		  data: data,
+		  success: function(results){
+		  	console.log('in success');
+		  	console.log(results);
+		  },
+		  dataType: 'json'
+		});
+	});*/
+});
 
 </script>

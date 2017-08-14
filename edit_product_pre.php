@@ -19,7 +19,7 @@
 // Sending header reference maybe this will fix the chrome bug??
 header('X-XSS-Protection:0');
 
-$productId = '311';
+$productId = $_GET['productId'];
 $productId = (int) $productId;
 $db_name = 'proliner_zcart';
 		$db_user = 'root';

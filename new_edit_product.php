@@ -40,6 +40,10 @@
 			<textarea style='width:100%;' name='products_name'><?php echo $product['products_name'];?></textarea>
 			<div class='np-spacer'></div>
 
+			<label>Product ID</label><br>
+			<input type='number' name='products_id' value="<?php echo $productId;?>" readonly/>
+			<div class='np-spacer'></div>
+
 			<label>Model</label><br>
 			<input type='text' name='products_model' value="<?php echo $product['products_model'];?>"/>
 			<div class='np-spacer'></div>
@@ -74,22 +78,12 @@ $(function(){
 	var description = $('#products_description');
 	$(button).on('click', function(){
 		var formValue = $(description).val();
-		console.log('got form value');
 		var encoded = encodeURI(formValue);
-		console.log('encoded data');
-		var data = {'code':encoded};
-		console.log(data);
-		var check = $.ajax({
-		  type: "POST",
-		  url: "http://zencart.dev/adminpro/editor-workaround/edit_product_action.php",
-		  data: data,
-		  success: function(results){
-		  	console.log('in success');
-		  	console.log(results);
-		  },
-		  dataType: 'json'
-		});
-		console.log(check);
+		var second_encoded = btoa(encoded);
+		// Set Encoded form value
+		$('#base-encode').attr('value',second_encoded);
+		$('#products_description').val('');
+		$('#np-form').submit();
 	});
 	/*button.on('click', function(){
 		var stuff = form.serializeArray();

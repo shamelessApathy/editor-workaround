@@ -62,7 +62,7 @@
 			<label>Gross Price</label><br>
 			<p><?php echo $product['products_price'];?><span style='color:red; font-size:8px;'>Edit Price in other area</span></p>
 			<label>DESCRIPTION</label><br>
-			<textarea type='text' id="products_description" style='width:600px; height:400px;' value="<?php echo $product['products_description'];?>"></textarea><br>
+			<textarea type='text' id="products_description" style='width:600px; height:400px;'><?php echo $product['products_description'];?></textarea><br>
 			<input type='hidden' id='base-encode' name='base-encoded-description'/>
 			<div class='np-spacer'></div>
 			<button type='button' id='np-submit-button'>Submit</button>

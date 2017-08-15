@@ -23,7 +23,7 @@ $productId = $_GET['productId'];
 $productId = (int) $productId;
 $db_name = 'proliner_zcart';
 		$db_user = 'root';
-		$db_pass = 'Poke8112';
+		$db_pass = 'proline55';
 		$host = 'localhost';
 		$charset = 'utf8';
 		$table = 'products_description';	
@@ -51,7 +51,7 @@ $product = array(
 
 $db_name = 'proliner_zcart';
 		$db_user = 'root';
-		$db_pass = 'Poke8112';
+		$db_pass = 'proline55';
 		$host = 'localhost';
 		$charset = 'utf8';
 		$table = 'products_description';	

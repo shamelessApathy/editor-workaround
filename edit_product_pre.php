@@ -15,15 +15,17 @@
 *    UPDATE: Here is chrome's error reasoning ERR_BLOCKED_BY_XSS_AUDITOR
 *
 */
-
+// Load ENV variables
+require_once('.env');
 // Sending header reference maybe this will fix the chrome bug??
+# This doesn't fix anything, had to double encode, URLENCODE first then BASE64 encode, then use JS to insert into form-field value to be sent via http post
 header('X-XSS-Protection:0');
 
 $productId = $_GET['productId'];
 $productId = (int) $productId;
 $db_name = 'proliner_zcart';
-		$db_user = 'root';
-		$db_pass = 'proline55';
+		$db_user = $_ENV['DB_USER'];
+		$db_pass = $_ENV['DB_PASS'];
 		$host = 'localhost';
 		$charset = 'utf8';
 		$table = 'products_description';	
@@ -50,8 +52,8 @@ $product = array(
 
 
 $db_name = 'proliner_zcart';
-		$db_user = 'root';
-		$db_pass = 'proline55';
+		$db_user = $_ENV['DB_USER'];
+		$db_pass = $_ENV['DB_PASS'];
 		$host = 'localhost';
 		$charset = 'utf8';
 		$table = 'products_description';	

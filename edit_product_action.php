@@ -1,5 +1,6 @@
 <?php
-
+// Load .env Variables
+require_once('.env');
 // I had originally been having a problem getting this to communicate but it worked just fine after making sure
 // this php function responded with a json formatted 'echo'  
 
@@ -33,8 +34,8 @@ $changed = substr($changed, 0 , -2);
 
 // Check to make sure productId actually exists
 $servername = "localhost";
-$username = "root";
-$password = "proline55";
+$username = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASS'];
 $dbname = "proliner_zcart";
 try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -67,8 +68,8 @@ if ($product_exists === TRUE)
 
 # This piece of code updates the products table
 $servername = "localhost";
-$username = "root";
-$password = "proline55";
+$username = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASS'];
 $dbname = "proliner_zcart";
 
 try {

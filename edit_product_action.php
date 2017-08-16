@@ -79,7 +79,8 @@ try {
 
     $sql = "UPDATE products
     		SET products_quantity = :products_quantity,
-    			products_model = :products_model
+    			products_model = :products_model,
+                products_status = :products_status
     		WHERE products_id= :products_id";
 
     // Prepare statement
@@ -87,6 +88,7 @@ try {
     // Bind Parameter Placeholders
     $stmt->bindParam(':products_id', $products_id, PDO::PARAM_INT);
     $stmt->bindParam(':products_model', $products_model, PDO::PARAM_STR);
+    $stmt->bindParam(':products_status', $products_status, PDO::PARAM_INT);
     $stmt->bindParam(':products_quantity', $products_quantity, PDO::PARAM_INT);
 
     	// execute the query

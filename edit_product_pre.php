@@ -16,14 +16,16 @@
 *
 */
 // Load ENV variables
+
+if(!isset($_COOKIE['zenAdminID'])) die('Illegal Access, login first');
+
 require_once('.env');
 // Sending header reference maybe this will fix the chrome bug??
 # This doesn't fix anything, had to double encode, URLENCODE first then BASE64 encode, then use JS to insert into form-field value to be sent via http post
-header('X-XSS-Protection:0');
 
-$productId = $_GET['productId'];
+$productId = $_POST['productId'];
 $productId = (int) $productId;
-$db_name = 'proliner_zcart';
+	    $db_name = $_ENV['DB_NAME'];
 		$db_user = $_ENV['DB_USER'];
 		$db_pass = $_ENV['DB_PASS'];
 		$host = 'localhost';
@@ -51,7 +53,7 @@ $product = array(
 
 
 
-$db_name = 'proliner_zcart';
+		$db_name = $_ENV['DB_NAME'];
 		$db_user = $_ENV['DB_USER'];
 		$db_pass = $_ENV['DB_PASS'];
 		$host = 'localhost';
@@ -74,6 +76,7 @@ $products_type = $stuff['products_type'];
 * then setting them to the correct array['key'] afterwards to prepare them for the view
 * -B
 */
+
 $product['id'] = $products_id;
 $product['products_model'] = $products_model;
 $product['products_status'] = $products_status;

@@ -1,5 +1,7 @@
 <?php
 // Load .env Variables
+if(!isset($_COOKIE['zenAdminID'])) die('Illegal Access, login first');
+
 require_once('.env');
 // I had originally been having a problem getting this to communicate but it worked just fine after making sure
 // this php function responded with a json formatted 'echo'  
@@ -36,7 +38,7 @@ $changed = substr($changed, 0 , -2);
 $servername = "localhost";
 $username = $_ENV['DB_USER'];
 $password = $_ENV['DB_PASS'];
-$dbname = "proliner_zcart";
+$dbname = $_ENV['DB_NAME'];
 try {
 	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 	// set the PDO error mode to exception
@@ -70,7 +72,7 @@ if ($product_exists === TRUE)
 $servername = "localhost";
 $username = $_ENV['DB_USER'];
 $password = $_ENV['DB_PASS'];
-$dbname = "proliner_zcart";
+$dbname = $_ENV['DB_NAME'];
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -104,9 +106,9 @@ $conn = null;
 
 # This piece of code edits the products_description table
 $servername = "localhost";
-$username = "root";
-$password = "proline55";
-$dbname = "proliner_zcart";
+$username = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASS'];
+$dbname = $_ENV['DB_NAME'];
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
